@@ -14,16 +14,18 @@ if question:
 
     st.subheader("Answer:")
     st.write(answer)
-
-    st.subheader("Sources:")
-    if not sources:
+    if answer=="I couldn't find information about that in the documents you provided.":
         st.write("No relevant documents were used.")
     else:
-        seen_titles = set()
-        for doc in sources:
-            title = format_source(doc)
-            if title in seen_titles:
-                continue  # skip duplicates
-            seen_titles.add(title)
-            st.write("-", title)
+        st.subheader("Sources:")
+        if not sources:
+            st.write("No relevant documents were used.")
+        else:
+            seen_titles = set()
+            for doc in sources:
+                title = format_source(doc)
+                if title in seen_titles:
+                    continue  # skip duplicates
+                seen_titles.add(title)
+                st.write("-", title)
 
